@@ -79,10 +79,9 @@ public class Course {
                     "JOIN students_courses ON (courses.id = students_courses.course_id) " +
                     "JOIN students ON (students_courses.student_id = students.id) " +
                     "WHERE courses.id =:course_id";
-      List<Student> roster = con.createQuery(sql)
+      return con.createQuery(sql)
         .addParameter("course_id", id)
         .executeAndFetch(Student.class);
-      return roster;
     }
   }
 }
