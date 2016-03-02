@@ -68,10 +68,9 @@ public class Student {
                    "JOIN students_courses ON (students.id = students_courses.student_id) " +
                    "JOIN courses ON (students_courses.course_id = courses.id) " +
                    "WHERE students.id =:student_id";
-      List<Course> classSchedule = con.createQuery(sql)
+      return con.createQuery(sql)
         .addParameter("student_id", id)
         .executeAndFetch(Course.class);
-      return classSchedule;
     }
   }
 
